@@ -115,8 +115,9 @@ app.get('/api', (req, res) => {
     res.json({fruits: ['aaaa', 'dddd', 'cccc']});
 });
     
-app.listen(8080, () => {
-    // console.log('#290 25.0128 09:44 Server http://localhost:8080');
+// app.listen(8080, () => {
+app.listen(PORT, () => {
+        // console.log('#290 25.0128 09:44 Server http://localhost:8080');
     console.log(`290 25.0128 14:53 server URL = ${process.env.SERVER_URL} and CORS origin = ${process.env.CORS_ORIGIN}`);
 });
 
