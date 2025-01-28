@@ -114,7 +114,7 @@ app.post('/api/create', async (req, res) => {
 
 
 app.get('/api', (req, res) => {
-    res.json({fruits: ['aaaa', 'dddd', 'cccc']});
+    res.json({fruits: ['16:18', 'dddd', 'cccc']});
 });
     
 // app.listen(8080, () => {
