@@ -18,6 +18,75 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // Import the model
 const MyModel = require('./model');
+
+// Swagger setup
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+const swaggerOptions = {
+    swaggerDefinition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'My API',
+            version: '1.0.0',
+            description: 'API documentation'
+        },
+        servers: [
+            {
+                url: 'http://localhost:8080'
+            }
+        ]
+    },
+    apis: ['./server.js']
+};
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     MyModel:
+ *       type: object
+ *       required:
+ *         - field1
+ *         - field2
+ *         - field3
+ *       properties:
+ *         field1:
+ *           type: string
+ *           description: The first field
+ *         field2:
+ *           type: integer
+ *           description: The second field
+ *         field3:
+ *           type: array
+ *           items:
+ *             type: string
+ *           description: The third field
+ */
+/**
+ * @swagger
+ * /api/create:
+ *   post:
+ *     summary: Create a new document
+ *     tags: [MyModel]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/MyModel'
+ *     responses:
+ *       200:
+ *         description: The created document
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/MyModel'
+ *       500:
+ *         description: Some server error
+ */
+
+
 // Create a sample document
 // app.get('/api/create', async (req, res) => {
 app.post('/api/create', async (req, res) => {
