@@ -3,7 +3,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const corsOptions = {
-    origin: 'http://localhost:5173' // only accept from this origin
+    // origin: 'http://localhost:5173' // only accept from this origin
+    origin: process.env.CORS_ORIGIN // use the environment variable for the origin
 };
 app.use(cors(corsOptions));
 app.use(express.json()); // Middleware to parse JSON bodies
@@ -32,7 +33,8 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: 'http://localhost:8080'
+                // url: 'http://localhost:8080'
+                url: process.env.SERVER_URL // Local server URL
             }
         ]
     },
@@ -114,6 +116,7 @@ app.get('/api', (req, res) => {
 });
     
 app.listen(8080, () => {
-    console.log('#290 25.0128 09:44 Server http://localhost:8080');
+    // console.log('#290 25.0128 09:44 Server http://localhost:8080');
+    console.log(`290 25.0128 14:53 server URL = ${process.env.SERVER_URL} and CORS origin = ${process.env.CORS_ORIGIN}`);
 });
 
