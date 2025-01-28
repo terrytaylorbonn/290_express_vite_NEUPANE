@@ -93,7 +93,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 // app.get('/api/create', async (req, res) => {
 app.post('/api/create', async (req, res) => {
         try {
-          const { field1, field2, field3 } = req.body;
+            console.log('Request body:', req.body); // Log the request body
+            const { field1, field2, field3 } = req.body;
           const newDocument = new MyModel({
             // field1: 'Sample String',
             // field2: 123,
@@ -106,6 +107,7 @@ app.post('/api/create', async (req, res) => {
         console.log(newDocument); // Print newDocument to the console
         res.json(newDocument);
     } catch (err) {
+        console.error('Error creating document:', err); // Log the error
         res.status(500).json({ error: err.message });
     }
 });
