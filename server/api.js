@@ -4,6 +4,8 @@ const router = express.Router();
 const MyModel = require('./model');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const { graphqlHTTP } = require('express-graphql');
+const schema = require('./graphql/schema');
 
 // Swagger setup
 const swaggerOptions = {
@@ -126,5 +128,12 @@ router.get('/api/read', async (req, res) => {
 router.get('/api', (req, res) => {
     res.json({ fruits: ['jan', '30', '2025'] });
 });
+
+// GraphQL endpoint
+router.use('/graphql', graphqlHTTP({
+    schema,
+    graphiql: true
+}));
+
 
 module.exports = router;
