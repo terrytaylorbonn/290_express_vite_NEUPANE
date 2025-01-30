@@ -94,6 +94,35 @@ router.post('/api/create', async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /api/read:
+ *   get:
+ *     summary: Retrieve a list of documents
+ *     tags: [MyModel]
+ *     responses:
+ *       200:
+ *         description: A list of documents
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/MyModel'
+ *       500:
+ *         description: Some server error
+ */
+router.get('/api/read', async (req, res) => {
+    try {
+        const documents = await MyModel.find();
+        res.json(documents);
+    } catch (err) {
+        console.error('Error fetching documents:', err); // Log the error
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
 router.get('/api', (req, res) => {
     res.json({ fruits: ['jan', '30', '2025'] });
 });
