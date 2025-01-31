@@ -1,11 +1,16 @@
+// /client/src/App.jsx
 import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
+import ApiRequest from './ApiRequest';
+import ApiRequest2 from './ApiRequest2';
+import ApiRequest3 from './ApiRequest3';
 import axios from 'axios'
 
 function App() {
+
+
   const [count, setCount] = useState(0)
   const [array, setArray] = useState([])
 
@@ -50,6 +55,9 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <ApiRequest3 />
+      <ApiRequest2 />
+      <ApiRequest />
     </>
   )
 }
