@@ -7,6 +7,7 @@ import ApiRequest from './ApiRequest';
 import ApiRequest2 from './ApiRequest2';
 import ApiRequest3 from './ApiRequest3';
 import axios from 'axios'
+import GraphQLRequest from './GraphQLRequest';
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <GraphQLRequest />
       <ApiRequest3 />
       <ApiRequest2 />
       <ApiRequest />

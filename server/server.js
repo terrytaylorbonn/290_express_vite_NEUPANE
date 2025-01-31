@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 const corsOptions = {
     // origin: 'http://localhost:5173' // only accept from this origin
-    origin: process.env.CORS_ORIGIN // use the environment variable for the origin
+    origin: process.env.CORS_ORIGIN || '*' // use the environment variable for the origin
 };
 app.use(cors(corsOptions));
 app.use(express.json()); // Middleware to parse JSON bodies
