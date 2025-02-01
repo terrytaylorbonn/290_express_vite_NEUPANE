@@ -1,5 +1,6 @@
 // /client/src/ApiRequest3.jsx
 import { useState } from 'react';
+// import axios from 'axios';
 import useApiRequest from './useApiRequest';
 
 const ApiRequest3 = () => {
@@ -8,7 +9,8 @@ const ApiRequest3 = () => {
     const [httpMethod, setHttpMethod] = useState('GET');
     const [triggerRequest, setTriggerRequest] = useState(false);
 
-    const { response, loading, error } = useApiRequest(triggerRequest ? endpoint : null, queryParams, httpMethod);
+    const token = localStorage.getItem('token');
+    const { response, loading, error } = useApiRequest(triggerRequest ? endpoint : null, queryParams, httpMethod, token);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,7 +19,7 @@ const ApiRequest3 = () => {
 
     return (
         <div>
-            <h2>API Request</h2>
+            <h2>API Request 3 v02</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>HTTP Method:</label>

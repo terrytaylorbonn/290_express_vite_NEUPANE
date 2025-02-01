@@ -74,6 +74,16 @@ router.post('/api/login', async (req, res) => {
     }
 });
 
+// Add a route to get all users (for verification purposes)
+router.get('/api/users', async (req, res) => {
+    try {
+        const users = await User.find();
+        res.json(users);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 
 /**
  * @swagger
@@ -121,7 +131,7 @@ router.post('/api/login', async (req, res) => {
  *       500:
  *         description: Some server error
  */
-router.post('/api/create', async (req, res) => {
+router.post('/api/create', authMiddleware, async (req, res) => {
     try {
         console.log('Request body:', req.body); // Log the request body
         const { field1, field2, field3 } = req.body;
