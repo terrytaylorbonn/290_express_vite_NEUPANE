@@ -8,6 +8,7 @@ import ApiRequest2 from './ApiRequest2';
 import ApiRequest3 from './ApiRequest3';
 import axios from 'axios'
 import GraphQLRequest from './GraphQLRequest';
+import Auth from './Auth';
 
 function App() {
 
@@ -16,8 +17,8 @@ function App() {
   const [array, setArray] = useState([])
 
   const fetchAPI = async () => {
-    // const response = await axios.get('http://localhost:8080/api')
-    const response = await axios.get('https://two90-express-vite-neupane.onrender.com/api')
+    const response = await axios.get('http://localhost:8080/api')
+    // const response = await axios.get('https://two90-express-vite-neupane.onrender.com/api')
 
     
     setArray(response.data.fruits)
@@ -56,6 +57,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <Auth />
       <GraphQLRequest />
       <ApiRequest3 />
       <ApiRequest2 />
