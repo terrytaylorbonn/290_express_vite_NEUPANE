@@ -10,27 +10,11 @@ import './App.css'
 // import ApiRequest3 from './ApiRequest3';
 // import axios from 'axios'
 // import GraphQLRequest from './GraphQLRequest';
-import Auth from './Auth';
+// import Auth from './Auth';
+import AuthPage from './AuthPage';
 import ApiPage from './ApiPage';
 
 function App() {
-
-
-  // const [count, setCount] = useState(0)
-  // const [array, setArray] = useState([])
-
-  // const fetchAPI = async () => {
-  //   const response = await axios.get('http://localhost:8080/api')
-  //   // const response = await axios.get('https://two90-express-vite-neupane.onrender.com/api')
-
-    
-  //   setArray(response.data.fruits)
-  //   console.log(response.data.fruits)
-  // };
-
-  // useEffect(() => {
-  //   fetchAPI();
-  // }, []);
 
   return (
     <Router>
@@ -44,20 +28,7 @@ function App() {
         </a>
       </div>
       <h1>25.0202</h1>
-      {/* <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-        {array.map((fruit, index) => (
-          <div key={index}>
-            <p>{fruit}</p>
-            <br></br>
-          </div>
-        ))}
-      </div> */}
+
       <p className="read-the-docs">
         Pages 
         </p>
@@ -66,36 +37,24 @@ function App() {
                             <Link to="/">Home</Link>
                   <br></br>
                             <Link to="/api">API Requests</Link>
-                    
+                 <br />
+                    <Link to="/auth">Authentication</Link>
+  
         </nav>
-      {/* <nav>
-                    <ul>
-                        <li>
-                            <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/api">API Requests</Link>
-                        </li>
-                    </ul>
-        </nav> */}
+
         <Routes>
-                    <Route path="/" element={<Auth />} />
+                    <Route path="/" element={<div>(Home Page)</div>} />
                     <Route path="/api" element={<ApiPage />} />
+                    <Route path="/auth" element={<AuthPage />} />
         </Routes>
 
-        {/* <Switch>
-            <Route exact path="/">
-                <Auth />
-            </Route>
-            <Route path="/api">
-                <ApiPage />
-            </Route>
-        </Switch> */}
+        {/* <Routes>
+                    <Route path="/" element={<Auth />} />
+                    <Route path="/api" element={<ApiPage />} />
+        </Routes> */}
     </div>
 </Router>
 );
-
-
 }
 
 export default App
