@@ -9,6 +9,10 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json()); // Middleware to parse JSON bodies
 
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
+
 // Connect to MongoDB
 const mongoose = require('mongoose');
 require('dotenv').config();
@@ -19,10 +23,12 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 // Import and use the API routes
 const apiRoutes = require('./api');
 app.use(apiRoutes);
-//=====================================================    
+//==========================    
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+//==========================
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
         // console.log('#290 25.0128 09:44 Server http://localhost:8080');
-    console.log(`290 25.0128 14:53 server URL = ${process.env.SERVER_URL} and CORS origin = ${process.env.CORS_ORIGIN}`);
+    console.log(`290 25.020 1012am server URL = ${process.env.SERVER_URL} and CORS origin = ${process.env.CORS_ORIGIN}`);
 });
 
